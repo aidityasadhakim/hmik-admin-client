@@ -1,6 +1,7 @@
 "use client";
 import React from 'react'
 import Navbar from '@/components/Navbar'
+import Sidebar from '@/components/Sidebar'
 import Link from 'next/navigation'
 export const metadata = {
   title: 'HMIK Dashboard Admin ',
@@ -8,7 +9,10 @@ export const metadata = {
 
 const Page = () => {
   return (
-    <Navbar />
+    <div>
+      <Navbar />
+      <Sidebar />
+    </div>
   )
 }
 

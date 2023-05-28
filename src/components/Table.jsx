@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useSWR from "swr";
+import Link from 'next/link'
+
 const Table = () => {
     const [showModal, setShowModal] = useState(false);
       const [saving, setSaving] = useState(false);

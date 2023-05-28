@@ -1,11 +1,12 @@
 "use client";
+import React from 'react'
 import Link from "next/link";
 
 export const metadata = {
   title: 'HMIK Login Admin ',
 }
 
-export default function Home() {
+const Page = () => {
   return (
     <div className="bg-slate-200 form width-full" >
         <form className="w-full max-w-sm mx-auto bg-white p-8 rounded-md shadow-lg">
@@ -58,7 +59,7 @@ export default function Home() {
           </div>
         
           <Link
-            href="page/dashboard"
+            href="pages/dashboard"
           >
             <button
                 className="w-full bg-blue-700 text-white text-sm font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300"
@@ -73,3 +74,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Page
