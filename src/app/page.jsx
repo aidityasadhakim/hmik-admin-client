@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         
           <Link
-            href="@/app/page/dashboard/page"
+            href="page/dashboard"
           >
             <button
                 className="w-full bg-blue-700 text-white text-sm font-bold py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300"

@@ -1,11 +1,15 @@
 "use client";
-import Navbar from '@/app/components/navbar'
+import React from 'react'
+import Navbar from '@/components/Navbar'
+import Link from 'next/navigation'
 export const metadata = {
   title: 'HMIK Dashboard Admin ',
 }
 
-export default function Dashboard() {
+const Page = () => {
   return (
-        <Navbar />
-    )
+    <Navbar />
+  )
 }
+
+export default Page
