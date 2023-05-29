@@ -1,11 +1,11 @@
 "use client";
-import React from 'react'
-import Navbar from '@/components/Navbar'
-import Sidebar from '@/components/Sidebar'
-import Link from 'next/navigation'
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/sidebar/Sidebar";
+import Link from "next/navigation";
 export const metadata = {
-  title: 'HMIK Dashboard Admin ',
-}
+  title: "HMIK Dashboard Admin ",
+};
 
 const Page = () => {
   return (
@@ -13,7 +13,7 @@ const Page = () => {
       <Navbar />
       <Sidebar />
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
