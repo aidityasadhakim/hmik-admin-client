@@ -24,6 +24,7 @@ const Sidebar = () => {
           {MENU_LIST.map((menu, index) => {
             return (
               <SidebarItem
+                key={index}
                 path={menu.path}
                 name={menu.name}
                 activeLink={activeLink}
