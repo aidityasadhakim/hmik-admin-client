@@ -1,8 +1,6 @@
 "use client";
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/sidebar/Sidebar";
-import Link from "next/navigation";
 export const metadata = {
   title: "HMIK Dashboard Admin ",
 };
