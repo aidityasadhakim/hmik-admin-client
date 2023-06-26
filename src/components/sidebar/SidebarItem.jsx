@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-const SidebarItem = ({ path, name, activeLink }) => {
-  console.log(path.test(activeLink));
+const SidebarItem = ({ path, name, activeLink, href }) => {
   return (
     <>
       <li
@@ -12,7 +11,7 @@ const SidebarItem = ({ path, name, activeLink }) => {
         }`}
       >
         <Link
-          href={path}
+          href={href}
           className="flex items-center p-2 text-black rounded-lg dark:text-black  dark:hover:bg-gray-700"
         >
           <svg

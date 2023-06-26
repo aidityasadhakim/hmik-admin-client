@@ -28,6 +28,7 @@ const Sidebar = () => {
               <SidebarItem
                 key={index}
                 path={menu.path}
+                href={menu.href}
                 name={menu.name}
                 activeLink={activeLink}
               />

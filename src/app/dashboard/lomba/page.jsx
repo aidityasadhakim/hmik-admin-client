@@ -1,13 +1,10 @@
-"use client";
-import { usePathname } from "next/navigation";
+import Layout from "@/components/dashboard/Layout.component";
 
 const page = () => {
-  const pathname = usePathname();
-  const isDashboard = /^\/dashboard\/.*/.test(pathname);
   return (
-    <div>
-      <h1>{isDashboard ? "Yes" : "No"}</h1>
-    </div>
+    <Layout>
+      <h1>Hello</h1>
+    </Layout>
   );
 };
 
