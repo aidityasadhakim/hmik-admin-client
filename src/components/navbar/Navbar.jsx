@@ -1,7 +1,9 @@
-import React from "react";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   return (
     <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
       <div className="px-3 py-3 lg:px-5 lg:pl-3">
@@ -284,24 +286,25 @@ const Navbar = () => {
                     className="text-sm text-gray-900 dark:text-white"
                     role="none"
                   >
-                    Neil Sims
+                    {session?.user?.name}
                   </p>
                   <p
                     className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                     role="none"
                   >
-                    neil.sims@flowbite.com
+                    {session?.user?.email}
                   </p>
                 </div>
                 <ul className="py-1" role="none">
                   <li>
-                    <Link
+                    <button
                       href="/"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      onClick={() => signOut()}
                       role="menuitem"
                     >
                       Sign out
-                    </Link>
+                    </button>
                   </li>
                 </ul>
               </div>

@@ -1,5 +1,4 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import api from "@/api";
 
 export const authOptions = {
   session: {
@@ -8,7 +7,7 @@ export const authOptions = {
   pages: {
     signIn: "/login",
   },
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Sign in",
