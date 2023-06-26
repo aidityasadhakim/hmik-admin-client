@@ -1,22 +1,22 @@
 export const MENU_LIST = [
   {
     name: "Home",
-    path: "/",
+    path: new RegExp(/^\/dashboard/),
   },
   {
     name: "Lomba",
-    path: "dashboard/lomba",
+    path: new RegExp(/^\/dashboard\/lomba\/.*/),
   },
   {
     name: "Seminar",
-    path: "dashboard/seminar",
+    path: /^\/dashboard\/seminar\/.*/,
   },
   {
     name: "Acara",
-    path: "dashboard/acara",
+    path: /^\/dashboard\/acara\/.*/,
   },
   {
     name: "Acara",
-    path: "dashboard/acara",
+    path: /^\/dashboard\/acara\/.*/,
   },
 ];

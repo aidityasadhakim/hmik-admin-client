@@ -1,12 +1,13 @@
 import Link from "next/link";
 
 const SidebarItem = ({ path, name, activeLink }) => {
+  console.log(path.test(activeLink));
   return (
     <>
       <li
         className={`rounded-lg  ${
-          activeLink === path
-            ? "bg-blue-700 text-black"
+          path.test(activeLink)
+            ? "bg-blue-700 text-[#ffffff]"
             : "bg-white text-black-700"
         }`}
       >
@@ -17,7 +18,7 @@ const SidebarItem = ({ path, name, activeLink }) => {
           <svg
             aria-hidden="true"
             className={`w-6 h-6 transition duration-75 ${
-              activeLink === path ? "text-white" : "text-gray-500"
+              path.test(activeLink) ? "text-white" : "text-gray-500"
             } dark:text-black400 group-hover:text-gray-900 dark:group-hover:text-white`}
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -30,7 +31,7 @@ const SidebarItem = ({ path, name, activeLink }) => {
             ></path>
           </svg>
           <span
-            className={` ${activeLink === path ? "text-white ml-3" : "ml-3"}`}
+            className={` ${path.test(activeLink) ? "text-white ml-3" : "ml-3"}`}
           >
             {name}
           </span>
