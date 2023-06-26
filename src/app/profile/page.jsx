@@ -1,7 +1,7 @@
 "use client";
 import { useSession, getSession } from "next-auth/react";
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession();
   return (
     <div>
@@ -10,4 +10,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
