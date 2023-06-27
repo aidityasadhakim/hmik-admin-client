@@ -5,7 +5,7 @@ const Page = () => {
   const { data: session } = useSession();
   return (
     <div>
-      <h1>Welcome to the protected route {session?.user?.name}</h1>
+      <h1>Welcome to the protected route {JSON.stringify(session)}</h1>
     </div>
   );
 };

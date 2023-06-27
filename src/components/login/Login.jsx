@@ -39,6 +39,7 @@ const Login = () => {
           email: email,
           password: password,
           name: response?.data?.data?.user?.name,
+          accessToken: response.data?.data?.accessToken,
           redirect: true,
           callbackUrl: "/",
         });

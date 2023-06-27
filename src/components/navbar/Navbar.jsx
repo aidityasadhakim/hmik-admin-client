@@ -1,9 +1,20 @@
 "use client";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { privateApi } from "@/api";
 
 const Navbar = () => {
   const { data: session } = useSession();
+
+  const signOutHandler = async () => {
+    signOut();
+    try {
+      const res = await privateApi.post("/logout");
+      console.log(res?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <nav className="fixed z-50 top-0 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 ">
@@ -301,7 +312,7 @@ const Navbar = () => {
                     <button
                       href="/"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                      onClick={() => signOut()}
+                      onClick={() => signOutHandler()}
                       role="menuitem"
                     >
                       Sign out

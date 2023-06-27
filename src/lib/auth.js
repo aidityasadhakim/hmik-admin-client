@@ -3,9 +3,19 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions = {
   session: {
     strategy: "jwt",
+    maxAge: 5 * 60 * 60,
   },
   pages: {
     signIn: "/login",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      session.user = token;
+      return session;
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -38,8 +48,8 @@ export const authOptions = {
 
           const user = {
             name: credentials?.name,
+            accessToken: credentials?.accessToken,
             email: credentials?.email,
-            password: credentials?.password,
           };
 
           if (user.email) {
