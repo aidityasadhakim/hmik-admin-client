@@ -1,9 +1,9 @@
-const TableItemModal = ({
-  setShowModal,
-  saveItemHandler,
-  showModal,
-  saving,
-}) => {
+import { useTableContext } from "@/context/TableContext";
+
+const TableItemModal = ({ saveItemHandler }) => {
+  const { state, dispatch } = useTableContext();
+  const { showModal, saving } = state;
+
   return (
     showModal && (
       <div
@@ -25,7 +25,7 @@ const TableItemModal = ({
               <button
                 type="button"
                 className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                onClick={() => setShowModal(false)}
+                onClick={() => dispatch({ type: "hideModal" })}
               >
                 <svg
                   aria-hidden="true"

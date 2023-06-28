@@ -37,9 +37,9 @@ const Login = () => {
       if (response.status == 200) {
         const result = await signIn("credentials", {
           email: email,
-          password: password,
           name: response?.data?.data?.user?.name,
           accessToken: response.data?.data?.accessToken,
+          id: response.data?.data?.user?.id,
           redirect: true,
           callbackUrl: "/",
         });

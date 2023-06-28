@@ -50,6 +50,7 @@ export const authOptions = {
             name: credentials?.name,
             accessToken: credentials?.accessToken,
             email: credentials?.email,
+            id: credentials?.id,
           };
 
           if (user.email) {

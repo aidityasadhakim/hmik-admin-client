@@ -5,12 +5,7 @@ import TableItem from "./TableItem";
 import TableActions from "./TableActions";
 import TableFooter from "./TableFooter";
 
-const TableItemContainer = ({
-  products,
-  setShowModal,
-  deleteItemHandler,
-  columns,
-}) => {
+const TableItemContainer = ({ products, columns }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -21,7 +16,6 @@ const TableItemContainer = ({
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   const totalPages = Math.ceil(products.length / pageSize);
-  //const  currentData = products.slice(startIndex, endIndex);
 
   //search filter
   const handleSearch = (event) => {
@@ -36,19 +30,10 @@ const TableItemContainer = ({
 
   return (
     <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-      <TableActions
-        searchTerm={searchTerm}
-        handleSearch={handleSearch}
-        setShowModal={setShowModal}
-      />
+      <TableActions searchTerm={searchTerm} handleSearch={handleSearch} />
       <div className="overflow-x-auto">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <TableItem
-            columns={columns}
-            items={currentData}
-            deleteItemHandler={deleteItemHandler}
-            setShowModal={setShowModal}
-          />
+          <TableItem columns={columns} items={currentData} />
         </div>
       </div>
       <TableFooter

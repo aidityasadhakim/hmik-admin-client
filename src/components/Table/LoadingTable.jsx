@@ -35,9 +35,9 @@ const LoadingTable = () => {
               </tr>
             </thead>
             <tbody>
-              {loadingRowsCount.map((product) => (
+              {loadingRowsCount.map((product, i) => (
                 <tr
-                  key={`${product.id}`}
+                  key={`${i}`}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
                   <td className="w-4 p-4">

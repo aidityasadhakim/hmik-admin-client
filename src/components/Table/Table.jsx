@@ -1,40 +1,68 @@
 "use client";
-import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useSWR from "swr";
 import LoadingTable from "./LoadingTable";
 import TableItemModal from "./TableItemModal";
 import TableItemContainer from "./TableItemContainer";
+import DeleteItemModal from "./DeleteItemModal";
+import { useTableContext } from "@/context/TableContext";
 import api from "@/api";
+import { privateApi } from "@/api";
+import { useEffect, useState } from "react";
 
-const Table = ({ columns }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [saving, setSaving] = useState(false);
+const Table = ({ columns, urlData, deleteUrl }) => {
+  const { state, dispatch } = useTableContext();
+  const { showModal, itemSlug } = state;
   const fetcher = (...args) =>
     api.get(...args).then((res) => res.data.data.posts);
-  const { data: products, error } = useSWR(
-    "http://127.0.0.1:8000/api/posts",
-    fetcher
-  );
+  const [productList, setProductList] = useState([]);
+  const { data: products, error } = useSWR(urlData, fetcher);
+  useEffect(() => {
+    setProductList(products);
+  }, [products]);
 
-  const deleteItemHandler = () => {
-    toast.success("Item successfully deleted!", {
-      position: "bottom-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+  const deleteItemHandler = async () => {
+    try {
+      dispatch({ type: "savingOn" });
+      const response = await privateApi.post(`${deleteUrl}/${itemSlug}`);
+      dispatch({ type: "savingOff" });
+      dispatch({ type: "hideDeleteModal" });
+
+      toast.success("Item successfully deleted!", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // productList = products.filter((item) => item.slug != itemSlug);
+      setProductList(productList.filter((item) => item.slug != itemSlug));
+    } catch (error) {
+      dispatch({ type: "savingOff" });
+      dispatch({ type: "hideDeleteModal" });
+
+      toast.error("Item not deleted!", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      console.log(error);
+    }
   };
   const saveItemHandler = () => {
-    setSaving(true);
+    dispatch({ type: "savingOn" });
     setTimeout(() => {
-      setSaving(false);
-      setShowModal(false);
+      dispatch({ type: "savingOff" });
+      dispatch({ type: "hideModal" });
     }, 2000);
   };
 
@@ -45,23 +73,18 @@ const Table = ({ columns }) => {
           showModal ? "blur-lg" : ""
         }`}
       >
-        {products ? (
+        {productList ? (
           <TableItemContainer
-            setShowModal={setShowModal}
             deleteItemHandler={deleteItemHandler}
-            products={products}
+            products={productList}
             columns={columns}
           />
         ) : (
           <LoadingTable />
         )}
       </div>
-      <TableItemModal
-        setShowModal={setShowModal}
-        saveItemHandler={saveItemHandler}
-        showModal={showModal}
-        saving={saving}
-      />
+      <TableItemModal saveItemHandler={saveItemHandler} />
+      <DeleteItemModal deleteItemHandler={deleteItemHandler} />
     </section>
   );
 };
