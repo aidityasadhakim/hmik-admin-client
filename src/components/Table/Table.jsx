@@ -69,7 +69,7 @@ const Table = ({ columns, urlData, deleteUrl }) => {
   return (
     <section className="p-2">
       <div
-        className={`mx-auto max-w-screen-xl px-2 lg:px-12 ${
+        className={`mx-auto max-w-screen-xl px-1 lg:px-5 ${
           showModal ? "blur-lg" : ""
         }`}
       >

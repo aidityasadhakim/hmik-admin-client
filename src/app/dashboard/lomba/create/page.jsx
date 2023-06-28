@@ -1,9 +1,10 @@
 import Layout from "@/components/dashboard/Layout.component";
+import CreateCompetition from "@/components/competition/CreateCompetition";
 
 const page = () => {
   return (
     <Layout>
-      <div>Hello</div>
+      <CreateCompetition></CreateCompetition>
     </Layout>
   );
 };

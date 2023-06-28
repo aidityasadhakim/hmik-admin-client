@@ -1,5 +1,3 @@
-import React from "react";
-
 const TableFooter = ({ totalPages, handleChangePage, currentPage }) => {
   return (
     <nav

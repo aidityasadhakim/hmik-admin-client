@@ -2,6 +2,7 @@
 import { useThemeContext } from "./ContextExample";
 import ButtonA from "./buttonA";
 import ButtonB from "./buttonB";
+import { Button } from "flowbite-react";
 
 const PageContent = () => {
   const { state, dispatch } = useThemeContext();

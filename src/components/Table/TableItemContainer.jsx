@@ -29,7 +29,7 @@ const TableItemContainer = ({ products, columns }) => {
   const currentData = filteredData.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+    <div className="bg-white w-full dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
       <TableActions searchTerm={searchTerm} handleSearch={handleSearch} />
       <div className="overflow-x-auto">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

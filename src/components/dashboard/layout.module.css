@@ -55,7 +55,8 @@
 
 .content {
   margin-top: 50px;
-  width: calc(100vw - 130px);
+  width: 100%;
+  /* width: calc(100vw - 130px); */
   max-height: 100vh;
   padding: 24px;
 }
