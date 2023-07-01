@@ -1,7 +1,7 @@
 import Layout from "@/components/dashboard/Layout.component";
 import TableLayout from "@/components/Table/TableLayout";
 
-const page = () => {
+const page = ({ children, searchParams }) => {
   const columns = [
     {
       colName: "Title",
@@ -20,8 +20,8 @@ const page = () => {
     <Layout>
       <TableLayout
         columns={columns}
-        urlData={`${process.env.API_URL}/posts?category=competition`}
-        deleteUrl={`${process.env.API_URL}/posts/delete`}
+        urlData={`/posts?category=competition`}
+        deleteUrl={`/posts/delete`}
       />
     </Layout>
   );

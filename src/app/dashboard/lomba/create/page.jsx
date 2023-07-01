@@ -4,7 +4,10 @@ import CreateCompetition from "@/components/competition/CreateCompetition";
 const page = () => {
   return (
     <Layout>
-      <CreateCompetition></CreateCompetition>
+      <CreateCompetition
+        categoryId={1}
+        sourceUrl="/dashboard/lomba"
+      ></CreateCompetition>
     </Layout>
   );
 };

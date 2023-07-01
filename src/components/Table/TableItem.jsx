@@ -1,14 +1,7 @@
 import { useTableContext } from "@/context/TableContext";
-import { useEffect } from "react";
 
 const TableItem = ({ items, columns }) => {
-  const { state, dispatch } = useTableContext();
-  const { itemSlug } = state;
-
-  useEffect(() => {
-    console.log(itemSlug);
-  }, [itemSlug]);
-
+  const { dispatch } = useTableContext();
   return (
     <table className="w-full text-sm text-left text-black dark:text-black">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
