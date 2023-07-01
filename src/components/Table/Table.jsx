@@ -10,17 +10,28 @@ import { useTableContext } from "@/context/TableContext";
 import api from "@/api";
 import { privateApi } from "@/api";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Table = ({ columns, urlData, deleteUrl }) => {
   const { state, dispatch } = useTableContext();
-  const { showModal, itemSlug } = state;
+  const { showModal, itemSlug, sourceUrl } = state;
   const fetcher = (...args) =>
     api.get(...args).then((res) => res.data.data.posts);
   const [productList, setProductList] = useState([]);
+  const pathname = usePathname();
   const { data: products, error } = useSWR(urlData, fetcher);
+
   useEffect(() => {
     setProductList(products);
   }, [products]);
+
+  useEffect(() => {
+    dispatch({ type: "setSourceUrl", payload: pathname });
+  }, []);
+
+  useEffect(() => {
+    console.log(sourceUrl);
+  }, [sourceUrl]);
 
   const deleteItemHandler = async () => {
     try {

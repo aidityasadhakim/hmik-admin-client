@@ -102,7 +102,7 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
           user_id: session.user.id,
           sub_category_id: subCategoryId,
         });
-        router.push(`${sourceUrl}?success=true&message=Posts%20Created!`);
+        router.push(`${sourceUrl}?success=true&message=Post Created!`);
       } catch (error) {
         if (error.response) {
           throw new Error(error?.response?.data?.error);
@@ -226,7 +226,11 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
               <p>Submit</p>
             </Button>
 
-            <Button size={"md"} gradientMonochrome="failure">
+            <Button
+              size={"md"}
+              gradientMonochrome="failure"
+              onClick={() => router.back()}
+            >
               <FaBan className="mr-2 h-5 w-5"></FaBan>
               <p>Cancel</p>
             </Button>

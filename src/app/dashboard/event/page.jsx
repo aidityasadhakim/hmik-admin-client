@@ -1,5 +1,5 @@
 import Layout from "@/components/dashboard/Layout.component";
-import Table from "@/components/Table/Table";
+import TableLayout from "@/components/Table/TableLayout";
 
 const page = () => {
   const columns = [
@@ -18,7 +18,11 @@ const page = () => {
   ];
   return (
     <Layout>
-      <Table columns={columns} />
+      <TableLayout
+        columns={columns}
+        urlData={`/posts?category=event`}
+        deleteUrl={`/posts/delete`}
+      />
     </Layout>
   );
 };

@@ -8,6 +8,12 @@ const applicationReducer = (state, action) => {
   const { key, type, value, payload } = action;
 
   switch (type) {
+    case "setSourceUrl": {
+      const newState = { ...state };
+      newState.sourceUrl = payload;
+      return newState;
+    }
+
     case "showModal": {
       const newState = { ...state };
       newState.showModal = true;
@@ -63,6 +69,7 @@ export const TableContextProvider = ({ children }) => {
     showDeleteModal: false,
     saving: false,
     itemSlug: null,
+    sourceUrl: "",
   });
   // const [itemId, setItemId] = useState("");
   // const [showModal, setShowModal] = useState(false);

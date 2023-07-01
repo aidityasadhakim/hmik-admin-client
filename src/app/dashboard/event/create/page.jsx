@@ -5,8 +5,8 @@ const page = () => {
   return (
     <Layout>
       <CreateCompetition
-        categoryId={1}
-        sourceUrl="/dashboard/lomba"
+        categoryId={2}
+        sourceUrl="/dashboard/event"
       ></CreateCompetition>
     </Layout>
   );

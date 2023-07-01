@@ -11,12 +11,12 @@ export const MENU_LIST = [
   },
   {
     name: "Seminar",
-    path: /^\/dashboard\/seminar\/.*/,
-    href: "/dashboard/seminar",
+    path: /^\/dashboard\/events\.*/,
+    href: "/dashboard/event",
   },
   {
     name: "Acara",
-    path: /^\/dashboard\/acara\/.*/,
-    href: "/dashboard/acara",
+    path: /^\/dashboard\/event\.*/,
+    href: "/dashboard/event",
   },
 ];

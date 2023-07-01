@@ -1,6 +1,10 @@
+import Link from "next/link";
+import { FaEye } from "react-icons/fa";
 import { useTableContext } from "@/context/TableContext";
 
 const TableItem = ({ items, columns }) => {
+  const { state } = useTableContext();
+  const { sourceUrl } = state;
   const { dispatch } = useTableContext();
   return (
     <table className="w-full text-sm text-left text-black dark:text-black">
@@ -34,7 +38,7 @@ const TableItem = ({ items, columns }) => {
               );
             })}
 
-            <td className="px-6 py-4 flex items-center">
+            <td className="px-6 py-4 flex items-center ">
               <button
                 type="button"
                 className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -56,6 +60,7 @@ const TableItem = ({ items, columns }) => {
                   />
                 </svg>
               </button>
+
               <button
                 className="font-medium text-red-600 dark:text-red-500 hover:underline ml-4"
                 // onClick={deleteItemHandler}
@@ -80,6 +85,10 @@ const TableItem = ({ items, columns }) => {
                   />
                 </svg>
               </button>
+
+              <Link href={`${sourceUrl}/${item.slug}`} className="items-center">
+                <FaEye className="font-medium text-[22px] ml-3 text-yellow-400 dark:text-yellow-300 hover:underline"></FaEye>
+              </Link>
             </td>
           </tr>
         ))}

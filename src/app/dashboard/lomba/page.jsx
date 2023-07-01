@@ -1,7 +1,7 @@
 import Layout from "@/components/dashboard/Layout.component";
 import TableLayout from "@/components/Table/TableLayout";
 
-const page = ({ children, searchParams }) => {
+const page = () => {
   const columns = [
     {
       colName: "Title",
