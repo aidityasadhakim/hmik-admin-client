@@ -15,6 +15,8 @@ const Login = () => {
 
   useEffect(() => {
     userRef.current.focus();
+    console.log("Axios API: ", api);
+    console.log(process.env.NEXT_PUBLIC_API_URL);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -64,6 +66,7 @@ const Login = () => {
         setErrMsg("Wrong Email or Password");
       } else {
         setErrMsg("Login Failed");
+        console.log(error);
       }
     }
   };
