@@ -75,18 +75,25 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
       formData.append("file", image);
       formData.append("upload_preset", process.env.NEXT_PUBLIC_UNSIGNED_PRESET);
       const res = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`,
+        // `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_UNSIGNED_PRESET}/image/upload`,
+
         {
           method: "POST",
           body: formData,
         }
       );
-
       const data = await res.json();
+      const error = data.error;
+
+      if (data.status !== 200) {
+        throw new Error(error.message);
+      }
+
       setImageUrl(data.secure_url);
     } catch (error) {
       setErrMsg(error?.message);
-      return new Error(error);
+      throw new Error(error);
     }
   };
 
@@ -94,7 +101,7 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
     e.preventDefault();
 
     try {
-      handleFile();
+      await handleFile();
       try {
         const response = await privateApi.post("/posts/create", {
           title: title,
