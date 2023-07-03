@@ -1,9 +1,31 @@
 "use client";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession, getSession } from "next-auth/react";
 import { privateApi } from "@/api";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const getAccessToken = async () => {
+    try {
+      const session = await getSession();
+      const accessToken = session?.user?.accessToken;
+      // console.log(session?.user);
+      try {
+        privateApi.defaults.headers.common = {
+          Authorization: `Bearer ${accessToken}`,
+        };
+      } catch (error) {
+        console.log(error.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getAccessToken();
+  }, []);
+
   const { data: session } = useSession();
 
   const signOutHandler = async () => {

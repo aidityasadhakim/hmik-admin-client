@@ -8,8 +8,10 @@ import api from "@/api";
 import { privateApi } from "@/api";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+const ReactQuill =
+  typeof window === "object" ? require("react-quill") : () => false;
 
 const CreateCompetition = ({ categoryId, sourceUrl }) => {
   const [title, setTitle] = useState("");

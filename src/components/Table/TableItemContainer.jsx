@@ -1,30 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import TableItem from "./TableItem";
 import TableActions from "./TableActions";
 import TableFooter from "./TableFooter";
-import { useSearchParams, usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { Alert } from "flowbite-react";
+import TableFlash from "./TableFlash.component";
 
 const TableItemContainer = ({ products, columns }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const searchParams = useSearchParams();
-  const success = searchParams.get("success");
-  const message = searchParams.get("message");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const router = useRouter();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (success === "true") {
-      setSuccessMsg(message);
-    }
-    router.replace(pathname);
-  }, []);
 
   const handleChangePage = (page) => {
     setCurrentPage(page);
@@ -47,6 +34,7 @@ const TableItemContainer = ({ products, columns }) => {
 
   return (
     <div className="bg-white w-full dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+      <TableFlash setSuccessMsg={setSuccessMsg}></TableFlash>
       {errMsg ? (
         <div className="px-3 py-2 mt-5">
           <Alert

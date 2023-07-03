@@ -1,7 +1,5 @@
-import Navbar from "@/components/navbar/Navbar";
-import Sidebar from "@/components/sidebar/Sidebar";
 import Layout from "@/components/dashboard/Layout.component";
-import Table from "@/components/Table/Table";
+import { getSession } from "next-auth/react";
 
 const Page = () => {
   return (

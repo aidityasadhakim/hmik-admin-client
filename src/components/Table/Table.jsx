@@ -29,10 +29,6 @@ const Table = ({ columns, urlData, deleteUrl }) => {
     dispatch({ type: "setSourceUrl", payload: pathname });
   }, []);
 
-  useEffect(() => {
-    console.log(sourceUrl);
-  }, [sourceUrl]);
-
   const deleteItemHandler = async () => {
     try {
       dispatch({ type: "savingOn" });

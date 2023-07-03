@@ -34,7 +34,7 @@ const Login = () => {
       );
       console.log(response);
 
-      if (response.status == 200) {
+      if (response.status === 200 && response.data.data.user) {
         const result = await signIn("credentials", {
           email: email,
           name: response?.data?.data?.user?.name,
