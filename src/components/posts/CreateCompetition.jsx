@@ -86,6 +86,7 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
       setImageUrl(data.secure_url);
     } catch (error) {
       setErrMsg(error?.message);
+      return new Error(error);
     }
   };
 
