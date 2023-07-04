@@ -84,12 +84,17 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
       );
       const data = await res.json();
       const error = data.error;
+      console.log(data);
 
-      if (data.status !== 200) {
-        throw new Error(error.message);
+      if (
+        image &&
+        (data.secure_url !== "null" || data.secure_url !== undefined)
+      ) {
+        console.log("masuk");
+        setImageUrl(data.secure_url);
+        return true;
       }
-
-      setImageUrl(data.secure_url);
+      throw new Error(error?.message);
     } catch (error) {
       setErrMsg(error?.message);
       throw new Error(error);
