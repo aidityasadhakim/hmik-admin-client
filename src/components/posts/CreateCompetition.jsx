@@ -90,7 +90,6 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
         image &&
         (data.secure_url !== "null" || data.secure_url !== undefined)
       ) {
-        console.log("masuk");
         setImageUrl(data.secure_url);
         return true;
       }
