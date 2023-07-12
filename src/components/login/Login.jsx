@@ -15,8 +15,6 @@ const Login = () => {
 
   useEffect(() => {
     userRef.current.focus();
-    console.log("Axios API: ", api);
-    console.log(process.env.NEXT_PUBLIC_API_URL);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -34,7 +32,6 @@ const Login = () => {
           },
         }
       );
-      console.log(response);
 
       if (response.status === 200 && response.data.data.user) {
         const result = await signIn("credentials", {

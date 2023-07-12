@@ -20,7 +20,6 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
   const [optionsCategory, setOptionsCategory] = useState([]);
   const [body, setBody] = useState("");
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState("null");
   const [errMsg, setErrMsg] = useState("");
   const { data: session } = useSession();
   const router = useRouter();
@@ -33,6 +32,7 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
       try {
         const response = await api.get("/subcategory");
         const category = response.data.data;
+
         category.map((cat) => {
           setOptionsCategory((options) => [
             ...options,
@@ -84,16 +84,14 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
       );
       const data = await res.json();
       const error = data.error;
-      console.log(data);
-
       if (
-        image &&
-        (data.secure_url !== "null" || data.secure_url !== undefined)
+        !image &&
+        (data.secure_url === "null" || data.secure_url === undefined)
       ) {
-        setImageUrl(data.secure_url);
-        return true;
+        throw new Error(error?.message);
       }
-      throw new Error(error?.message);
+      const secure_url = await data.secure_url;
+      return secure_url;
     } catch (error) {
       setErrMsg(error?.message);
       throw new Error(error);
@@ -104,8 +102,8 @@ const CreateCompetition = ({ categoryId, sourceUrl }) => {
     e.preventDefault();
 
     try {
-      await handleFile();
       try {
+        const imageUrl = await handleFile();
         const response = await privateApi.post("/posts/create", {
           title: title,
           slug: slug,

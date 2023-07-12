@@ -9,7 +9,7 @@ const SinglePost = ({ post }) => {
   return (
     <section className="w-full flex flex-col gap-[20px] bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg  mx-auto max-w-screen-xl px-5 pt-5 pb-[50px] lg:px-5p">
       <Button
-        className="w-[10%]"
+        className="w-[30%] md:w-[10%]"
         onClick={() => router.back()}
         gradientDuoTone="purpleToBlue"
       >
@@ -31,7 +31,7 @@ const SinglePost = ({ post }) => {
         </div>
       </div>
 
-      <img className="w-2/3" src={post.image} alt="image header" />
+      <img className="w-2/3 md:w-[500px]" src={post.image} alt="image header" />
 
       {parse(post.body)}
     </section>

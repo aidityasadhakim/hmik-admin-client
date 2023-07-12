@@ -76,7 +76,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex items-center">
-            <div>
+            {/* <div>
               <button
                 id="dropdownNotificationButton"
                 data-dropdown-toggle="dropdownNotification"
@@ -293,7 +293,7 @@ const Navbar = () => {
                   </div>
                 </a>
               </div>
-            </div>
+            </div> */}
             {/* End of Notif */}
             <div className="flex items-center ml-3">
               <div>
